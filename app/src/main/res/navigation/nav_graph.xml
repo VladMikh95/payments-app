@@ -27,5 +27,9 @@
         android:id="@+id/paymentFragment"
         android:name="ml.vladmikh.projects.payments_app.ui.payment.PaymentFragment"
         android:label="fragment_payment"
-        tools:layout="@layout/fragment_payment" />
+        tools:layout="@layout/fragment_payment" >
+        <argument
+            android:name="token"
+            app:argType="string" />
+    </fragment>
 </navigation>

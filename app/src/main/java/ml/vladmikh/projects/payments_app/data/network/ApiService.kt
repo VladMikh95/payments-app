@@ -1,9 +1,8 @@
 package ml.vladmikh.projects.payments_app.data.network
 
 import ml.vladmikh.projects.payments_app.data.network.model.AuthorizationResponse
+import ml.vladmikh.projects.payments_app.data.network.model.PaymentResponse
 import ml.vladmikh.projects.payments_app.ui.model.AuthorizationRequest
-import okhttp3.ResponseBody
-import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -19,5 +18,5 @@ interface ApiService {
 
     @Headers("Content-type: application/json", "app-key: 12345", "v: 1")
     @GET("payments")
-    suspend fun getPayments(@Header("token") token: String): Response<ResponseBody>
+    suspend fun getPayments(@Header("token") token: String): PaymentResponse
 }

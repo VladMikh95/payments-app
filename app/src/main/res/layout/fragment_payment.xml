@@ -4,6 +4,11 @@
     android:layout_height="match_parent"
     tools:context="ml.vladmikh.projects.payments_app.ui.payment.PaymentFragment">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="wrap_content"

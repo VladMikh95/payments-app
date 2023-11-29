@@ -6,6 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ml.vladmikh.projects.payments_app.data.network.ApiService
 import ml.vladmikh.projects.payments_app.data.repository.AuthorizationResponseRepository
+import ml.vladmikh.projects.payments_app.data.repository.PaymentResponseRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -41,6 +42,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideUserInfoRepository( mainService: ApiService): AuthorizationResponseRepository =AuthorizationResponseRepository(mainService)
+    fun provideAuthorizationResponseRepository( mainService: ApiService): AuthorizationResponseRepository =AuthorizationResponseRepository(mainService)
+
+    @Provides
+    @Singleton
+    fun providePaymentResponseRepository( mainService: ApiService): PaymentResponseRepository =PaymentResponseRepository(mainService)
 
 }
