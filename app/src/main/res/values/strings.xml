@@ -7,4 +7,8 @@
     <string name="edit_text_login_hint">Login</string>
     <string name="edit_text_password_hint">Password</string>
     <string name="error_wrong_login_or_password">Wrong login or password</string>
+    <string name="title_payment">Title:</string>
+    <string name="payment_amount">Amount:</string>
+    <string name="payment_created">Created:</string>
+    <string name="botton_sign_out">Sign out</string>
 </resources>
