@@ -28,10 +28,9 @@
         tools:listitem="@layout/payment_item"
         app:layout_constraintTop_toBottomOf="@id/signOutBotton"/>
 
-    <ImageView
+    <ProgressBar
         android:id="@+id/progressBar"
         android:layout_marginTop="@dimen/_48dp"
-        android:src="@drawable/progress_drawable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/recyclerView"
