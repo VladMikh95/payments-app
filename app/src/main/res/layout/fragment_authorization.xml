@@ -59,10 +59,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <ImageView
+    <ProgressBar
         android:id="@+id/progressBar"
         android:layout_marginTop="@dimen/_48dp"
-        android:src="@drawable/progress_drawable"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
