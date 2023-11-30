@@ -7,6 +7,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signOutBotton"
+        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8dp"
@@ -25,6 +26,27 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="3"
         tools:listitem="@layout/payment_item"
-        app:layout_constraintTop_toTopOf="@id/signOutBotton"/>
+        app:layout_constraintTop_toBottomOf="@id/signOutBotton"/>
+
+    <ImageView
+        android:id="@+id/progressBar"
+        android:layout_marginTop="@dimen/_48dp"
+        android:src="@drawable/progress_drawable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/recyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewError"
+        android:layout_marginTop="@dimen/_8dp"
+        android:textColor="@color/red"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/progressBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

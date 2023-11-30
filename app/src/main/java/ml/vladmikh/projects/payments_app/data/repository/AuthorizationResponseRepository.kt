@@ -8,7 +8,7 @@ import javax.inject.Inject
 class AuthorizationResponseRepository @Inject constructor(private val apiService: ApiService) {
 
 
-    suspend fun getToken(authorizationRequest: AuthorizationRequest): AuthorizationResponse {
+    suspend fun getAuthorizationResponse(authorizationRequest: AuthorizationRequest): AuthorizationResponse {
 
        return apiService.getAuthorizationResponse(authorizationRequest)
     }

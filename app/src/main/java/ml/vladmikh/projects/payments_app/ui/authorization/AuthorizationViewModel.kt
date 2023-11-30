@@ -10,24 +10,40 @@ import kotlinx.coroutines.launch
 import ml.vladmikh.projects.payments_app.data.network.model.AuthorizationResponse
 import ml.vladmikh.projects.payments_app.data.repository.AuthorizationResponseRepository
 import ml.vladmikh.projects.payments_app.ui.model.AuthorizationRequest
+import ml.vladmikh.projects.payments_app.ui.payment.PaymentState
+import ml.vladmikh.projects.payments_app.util.ErrorPayment
+import retrofit2.HttpException
 import retrofit2.Response
+import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
 class AuthorizationViewModel @Inject constructor(private val repository: AuthorizationResponseRepository): ViewModel() {
 
-    // Переменная, которая хранит ответ при авторизации пользователя
-    private var _authorizationResponse = MutableLiveData<AuthorizationResponse>()
-    val authorizationResponse: LiveData<AuthorizationResponse> get() = _authorizationResponse
-    fun getToken(authorizationRequest: AuthorizationRequest) {
+    //Переменая которая отвечает за состояние экрана
+    private var _state = MutableLiveData<AuthorizationState>().apply {
+        value = AuthorizationState.Initial
+    }
+    val state: LiveData<AuthorizationState> get() = _state
+
+    fun getAuthorizationResponse(authorizationRequest: AuthorizationRequest) {
         viewModelScope.launch {
 
+            _state.value = AuthorizationState.Loading
+
             try {
-                _authorizationResponse.value = repository.getToken(authorizationRequest)
-            } catch (e: Exception) {
-                Log.i("abcError", e.message.toString())
+                val authorizationResponse = repository.getAuthorizationResponse(authorizationRequest)
+                _state.value = AuthorizationState.Loaded(authorizationResponse)
+            } catch (e: IOException) {
+                _state.value = AuthorizationState.Error(ErrorPayment.CONNECTION_ERROR)
+            } catch (e: HttpException) {
+                _state.value = AuthorizationState.Error(ErrorPayment.ERROR_UNKNOWN)
+
             }
         }
+    }
 
+    fun initialState() {
+        _state.value = AuthorizationState.Initial
     }
 }
